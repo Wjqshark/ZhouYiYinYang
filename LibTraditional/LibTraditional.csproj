@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calender\ChineseCalendar.cs" />
+    <Compile Include="Models\Basic\Gua.cs" />
+    <Compile Include="Models\Basic\WuXing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
