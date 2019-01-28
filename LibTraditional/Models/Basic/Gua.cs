@@ -24,7 +24,25 @@ namespace LibTraditional.Models.Basic
         /// </summary>
         public string YaoStr { get; set; }
 
+        /// <summary>
+        /// 先天八卦数
+        /// </summary>
+        public int XianTianIndex { get; set; }
 
+        /// <summary>
+        /// 后天八卦数
+        /// </summary>
+        public int HouTianIndex { get; set; }
+
+        /// <summary>
+        /// 后天八卦方位
+        /// </summary>
+        public Postion HouTianPosition { get; set; }
+
+        /// <summary>
+        /// 五行
+        /// </summary>
+        public WuXing WuXing { get; set; }
 
 
         public Gua8(string name)
@@ -57,7 +75,7 @@ namespace LibTraditional.Models.Basic
                     break;
             }
             this.Name = name;
-            this.YaoStr = int.Parse(Convert.ToString(Yao, 2)).ToString("D3");
+            SetInfo();
         }
 
         public Gua8(int yao)
@@ -92,12 +110,63 @@ namespace LibTraditional.Models.Basic
                     break;
             }
             this.Yao = (byte)yao;
-            this.YaoStr = int.Parse(Convert.ToString(yao, 2)).ToString("D3");
+            SetInfo();
         }
 
         private void SetInfo()
         {
-
+            this.YaoStr = int.Parse(Convert.ToString(Yao, 2)).ToString("D3");
+            switch (Name)
+            {
+                case "乾":
+                    this.XianTianIndex = 1;
+                    this.HouTianIndex = 6;
+                    this.HouTianPosition = Postion.NorthWest;
+                    this.WuXing = new WuXing("金");
+                    break;
+                case "巽":
+                    this.XianTianIndex = 5;
+                    this.HouTianIndex = 4;
+                    this.HouTianPosition = Postion.SouthEast;
+                    this.WuXing = new WuXing("木");
+                    break;
+                case "离":
+                    this.XianTianIndex = 3;
+                    this.HouTianIndex = 9;
+                    this.HouTianPosition = Postion.South;
+                    this.WuXing = new WuXing("火");
+                    break;
+                case "艮":
+                    this.XianTianIndex = 7;
+                    this.HouTianIndex = 8;
+                    this.HouTianPosition = Postion.NorthEast;
+                    this.WuXing = new WuXing("土");  
+                    break;
+                case "兑":
+                    this.XianTianIndex = 2;
+                    this.HouTianIndex = 7;
+                    this.HouTianPosition = Postion.West;
+                    this.WuXing = new WuXing("金");
+                    break;
+                case "坎":
+                    this.XianTianIndex = 6;
+                    this.HouTianIndex = 1;
+                    this.HouTianPosition = Postion.North;
+                    this.WuXing = new WuXing("水");
+                    break;
+                case "震":
+                    this.XianTianIndex = 4;
+                    this.HouTianIndex = 3;
+                    this.HouTianPosition = Postion.East;
+                    this.WuXing = new WuXing("木");
+                    break;
+                case "坤":
+                    this.XianTianIndex = 8;
+                    this.HouTianIndex = 2;
+                    this.HouTianPosition = Postion.SouthWest;
+                    this.WuXing = new WuXing("土");
+                    break;
+            }
         }
     }
 }
